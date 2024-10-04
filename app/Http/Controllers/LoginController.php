@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // public function login()
-    // {
-    //     return view('auth.login');
-    // }
-
     public function loginform()
     {
         return view('auth/login');
@@ -38,6 +33,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'Logout Berhasil');
+        return redirect()->route('layouts.app')->with('success', 'Logout Berhasil');
     }
 }
+

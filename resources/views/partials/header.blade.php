@@ -4,7 +4,7 @@
         <a href="{{ route('app') }}">
             <b class="logo-abbr"><img src="/template/images/logo.png" alt=""></b>
             <span class="logo-compact"><img src="/template/images/logo-compact.png" alt=""></span>
-            <span class="brand-title" color="black">PuhSepuh</span>
+            <span class="brand-title" color="black"></span>
         </a>
     </div>
 </div>
@@ -150,20 +150,6 @@
                                     </a>
                                 </li>
                             </ul>
-
-                        </div>
-                    </div>
-                </li>
-                <li class="icons dropdown d-none d-md-flex">
-                    <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
-                        <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
-                    </a>
-                    <div class="drop-down dropdown-language dropdown-menu">
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li><a href="javascript:void()">English</a></li>
-                                <li><a href="javascript:void()">Bahasa</a></li>
-                            </ul>
                         </div>
                     </div>
                 </li>
@@ -188,16 +174,16 @@
                                     </li>
 
                                     <hr class="my-2">
-                                    <li>
+                                    {{-- <li>
                                         <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                    </li>
-                                    <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </li> --}}
+                                    <li><a><i class="icon-key"></i> <span>Logout</span></a></li>
                                 </ul>
                             </div>
                         </div>
                     @else
                     <div>
-                        <a href="{{ route('login') }}">Login</a>
+                        <h5><a href="{{ route('login') }}">Login</a></h5>
                     </div>
                     @endauth
 
@@ -206,6 +192,3 @@
         </div>
     </div>
 </div>
-<!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->

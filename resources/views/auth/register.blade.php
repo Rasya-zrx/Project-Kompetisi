@@ -41,6 +41,7 @@
                 <div class="col-xl-6">
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
+                            
                             <div class="card-body pt-5">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">

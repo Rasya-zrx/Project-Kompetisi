@@ -9,11 +9,11 @@
             </li>
             <li class="nav-label">Kompetisi</li>
             <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="icon-grid menu-icon"></i> <span class="nav-text">Jenis Kompetisi</span>
+                <a href="{{ url('/kompetisi') }}" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i> <span class="nav-text">Semua Kompetisi</span>
                 </a>
 
-                <ul aria-expanded="false">
+                {{-- <ul aria-expanded="false">
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i></i><span class="nav-text">Shooting</span>
@@ -36,9 +36,15 @@
                             <li><a href="./app-calender.html">Honor of Kings</a></li>
                         </ul>
                     </li>
-                </ul>
+
+                    <li>
+                        <a  aria-expanded="false">
+                            <i class="icon-plus menu-icon"></i><span class="nav-text">Tambah Jenis</span>
+                        </a>
+                    </li>
+                </ul> --}}
             </li>
-            <li>
+            {{-- <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-game-controller menu-icon"></i><span class="nav-text">Semua Kompetisi</span>
                 </a>
@@ -50,10 +56,15 @@
                     <li><a href="./app-calender.html">Dota 2</a></li>
                     <li><a href="./app-calender.html">Mobile Legends</a></li>
                     <li><a href="./app-calender.html">Honor of Kings</a></li>
+                    <li>
+                        <a href="javascript:void()" aria-expanded="false">
+                            <i class="icon-plus menu-icon"></i><span class="nav-text">Tambah Kompetisi</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
+            </li> --}}
 
-            <li class="nav-label">Platform</li>
+            {{-- <li class="nav-label">Platform</li>
             <li>
                 <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="icon-mouse menu-icon"></i><span class="nav-text">PC Games</span>
@@ -75,7 +86,7 @@
                     <li><a href="./uc-sweetalert.html">Mobile Legends</a></li>
                     <li><a href="./uc-toastr.html">Honor of Kings</a></li>
                 </ul>
-            </li>
+            </li> --}}
             
             <li class="nav-label">Lainnya</li>
             <li>
@@ -84,7 +95,7 @@
                 </a>
             </li>
             <li>
-                <a href="widgets.html" aria-expanded="false">
+                <a href="/user" aria-expanded="false">
                     <i class="icon-people menu-icon"></i><span class="nav-text">Users</span>
                 </a>
             </li>
