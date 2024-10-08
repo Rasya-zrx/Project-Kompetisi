@@ -25,11 +25,11 @@ Route::post('authenticate', [LoginController::class, 'authenticate'])->name('aut
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'registerprocess'])->name('registerprocess');
 
-// route::get('/kompetisi', [KompetisiController::class, 'index']);
-// route::get('/kompetisi/create', [KompetisiController::class, 'create']);
-// route::post('/kompetisi/store', [KompetisiController::class, 'store']);
-// route::post('/kompetisi/update/{id}', [KompetisiController::class, 'update']);
-// route::get('/kompetisi/destroy/{id}', [KompetisiController::class, 'destroy']);
+route::get('/kompetisi', [KompetisiController::class, 'index']);
+route::get('/kompetisi/create', [KompetisiController::class, 'create']);
+route::post('/kompetisi/store', [KompetisiController::class, 'store']);
+route::post('/kompetisi/update/{id}', [KompetisiController::class, 'update']);
+route::get('/kompetisi/destroy/{id}', [KompetisiController::class, 'destroy']);
 
 route::get('/user', [Usercontroller::class,'users'])->name('users/list');
 route::post('/user/store', [Usercontroller::class,'store'])->name('users/store');

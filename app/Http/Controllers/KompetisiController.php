@@ -16,18 +16,29 @@ class KompetisiController extends Controller
 
     public function store(Request $request)
     {
+        //  dd($request->all());
         Kompetisi::create([
             'nama_kompetisi' => $request->nama_kompetisi,
+            'deskripsi' => $request->deskripsi,
+            'tgl_kompetisi' => $request->tgl_kompetisi,
+            'tgl_buka_regist' => $request->tgl_buka_regist,
+            'tgl_tutup_regist' => $request->tgl_tutup_regist,
+            // 'gambar' => $request->gambar    
         ]);
         return redirect('/kompetisi')->with('success', 'Data Berhasil');
     }   
 
     public function update(Request $request, $id)
     {
-            $nama = Kompetisi::find($id);
-            $nama->update([
+        Kompetisi::where('id', $id)
+        ->where('id', $id)
+        ->update([
             'nama_kompetisi' => $request->nama_kompetisi,
-        ]);
+            'deskripsi' => $request->deskripsi,
+           'tgl_kompetisi' => $request->tgl_kompetisi,
+            'tgl_buka_regist' => $request->tgl_buka_regist,
+            'tgl_tutup_regist' => $request->tgl_tutup_regist,           
+            ]);
         return redirect('/kompetisi')->with('success', 'Data Berhasil');
     }
 
