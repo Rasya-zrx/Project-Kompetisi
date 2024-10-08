@@ -17,7 +17,7 @@ class kompetisi extends Model
         'tgl_kompetisi',
         'tgl_buka_regist',
         'tgl_tutup_regist',
-        // 'gambar',
+        'gambar',
     ];
 
     public function registrasi() : HasMany {

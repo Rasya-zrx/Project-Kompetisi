@@ -1,6 +1,6 @@
 <div class="nav-header position-fixed">
     <div class="brand-logo">
-        <a href="{{ route('app') }}">
+        <a href="/home">
             <b class="logo-abbr"><img src="/template/images/logo.png" alt=""></b>
             <span class="logo-compact"><img src="/template/images/logo-compact.png" alt=""></span>
             <span class="brand-title" color="black"></span>

@@ -9,12 +9,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('layouts.app'); 
+    return view('layouts.home'); 
 });
 
-// Route::get('user', [UserController::class, 'users'])->name('user');
-
-Route::get('app', [HomeController::class, 'index'])->name('app');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('login', [LoginController::class, 'loginform'])->name('login');
 Route::post('authenticate', [LoginController::class, 'authenticate'])->name('authenticate');

@@ -6,10 +6,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card">
-                        <div class="card-title">
+                        <div class="card-title mt-3 ml-3">
                             <h4>{{ $title }}</h4>
                         </div>
-                        <button type="button" class="btn mb-1 btn-rounded btn-primary" data-toggle="modal"
+                        <button type="button" class="btn ml-3 mr-3 btn-rounded btn-secondary" data-toggle="modal"
                             data-original-title="create" data-target="#modalcreate">+ TAMBAH DATA</button>
 
                         <!-- Modal Create -->
@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="card-body pt-5">
-                                                <form class="mt-5 mb-5" action="/kompetisi/store" method="post">
+                                                <form class="mt-5 mb-5" action="/kompetisi/store" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>Nama</label>
@@ -50,10 +50,14 @@
                                                         <input type="date" class="form-control" name="tgl_tutup_regist"
                                                             placeholder="Tanggal Tutup Registrasi" required>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="gambar">Foto</label>
+                                                        <input type="file" class="form-control" accept="image/*" name="gambar"required>
+                                                    </div>
                                         </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-outline-primary">Save Changes</button>
                                         </div>
                                         </form>
@@ -86,10 +90,13 @@
                                             <td>{{ $kompe->tgl_kompetisi }}</td>
                                             <td>{{ $kompe->tgl_buka_regist }}</td>
                                             <td>{{ $kompe->tgl_tutup_regist }}</td>
-                                            <td>{{ $kompe->gambar }}</td>
+                                            <td class="text-center">
+                                                <img src="{{ asset ('storage/'.$kompe->gambar) }}" class="rounded"
+                                                    style="width: 50px">
+                                            </td>
                                             <td>
                                                 <!-- Edit Button -->
-                                                <a href="#modaledit{{ $kompe->id }}" class="fa fa-pencil color-muted m-r-5"
+                                                <a href="#modaledit{{ $kompe->id }}" class="fa fa-edit color-muted mr-3"
                                                     data-toggle="modal" data-original-title="Edit"></a>
 
                                                 <!-- Modal Edit -->
@@ -105,7 +112,7 @@
                                                             <div class="modal-body">
                                                                 <div class="card-body pt-5">
                                                                     <form class="mt-5 mb-5"
-                                                                        action="/kompetisi/update/{{ $kompe->id }}" method="post">
+                                                                        action="/kompetisi/update/{{ $kompe->id }}" method="post" enctype="multipart/form-data">
                                                                         @csrf
                                                                         <div class="form-group">
                                                                             <label>Nama</label>
@@ -133,6 +140,10 @@
                                                                             <input type="date" class="form-control"
                                                                                 name="tgl_tutup_regist" value="{{ $kompe->tgl_tutup_regist }}" required>
                                                                         </div>
+                                                                        <div class="form-group mb-2">
+                                                                            <label for="gambar">Foto</label>
+                                                                            <input type="file" class="form-control" accept="image/*" name="gambar">
+                                                                        </div>
                                                             </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -146,7 +157,7 @@
                                                 </div>
 
                                                 <!-- Delete Button -->
-                                                <a href="#modaldelete{{ $kompe->id }}" class="fa fa-trash color-muted m-r-5"
+                                                <a href="#modaldelete{{ $kompe->id }}" class="fa fa-trash color-muted"
                                                     data-toggle="modal" data-original-title="Delete"></a>
 
                                                 <!-- Modal Delete -->
@@ -181,14 +192,8 @@
                         </div>
 
                         <!-- Pagination -->
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                            </ul>
+                        <div class="card-footer clearfix" >
+                            {{ $kompetisi->links() }}
                         </div>
                     </div>
                 </div>

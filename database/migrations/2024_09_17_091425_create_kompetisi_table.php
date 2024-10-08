@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tgl_kompetisi');
             $table->date('tgl_buka_regist');
             $table->date('tgl_tutup_regist');
-            $table->binary('gambar');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

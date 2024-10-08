@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label">Dashboard</li>
             <li>
-                <a href="{{ route('app') }}">
+                <a href="/home">
                     <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                 </a>
             </li>
