@@ -22,6 +22,11 @@
                 </a>
             </li>
             <li>
+                <a href="/registrasi/list" aria-expanded="false">
+                    <i class="icon-notebook menu-icon"></i><span class="nav-text">Data Registrasi</span>
+                </a>
+            </li>
+            <li>
                 <a href="/user" aria-expanded="false">
                     <i class="icon-people menu-icon"></i><span class="nav-text">Users</span>
                 </a>

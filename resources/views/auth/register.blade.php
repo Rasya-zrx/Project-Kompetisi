@@ -71,9 +71,9 @@
                                         <input type="password" class="form-control" name="password"
                                             placeholder="Password" required>
                                     </div>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Sign Up</button>
+                                    <button type="submit" class="btn login-form__btn submit w-100" href="{{ route('home') }}">Sign Up</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Have account? <a href="{{ route('login') }}"
+                                <p class="mt-5 login-form__footer">Have an account? <a href="{{ route('login') }}"
                                         class="text-primary">Sign In </a> now</p>
                                 </p>
                             </div>
@@ -84,7 +84,6 @@
         </div>
     </div>
     </div>
-
 
 
 

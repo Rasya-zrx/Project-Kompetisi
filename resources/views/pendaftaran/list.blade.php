@@ -6,10 +6,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-title">
-                        <h4>{{ $title }}</h4>
+                        <h4 class="card-title mt-3 ml-3">{{ $title }}</h4>
                     </div>
                     
-                    <!-- Button to trigger modal -->
+                    {{-- <!-- Button to trigger modal -->
                     <button type="button" class="btn mb-1 btn-rounded btn-primary" data-toggle="modal" 
                             data-original-title="create" data-target="#modalcreate">+ TAMBAH DATA</button>
 
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -70,21 +70,21 @@
                             <thead>
                                 <tr class="text-center">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
+                                    <th>User ID</th>
+                                    <th>ID Kompetisi</th>
+                                    <th>tgl registrasi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($registrasi as $registrasi)
                                     <tr class="text-center">
-                                        <th>{{ $user->id }}</th>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
+                                        <th>{{ $registrasi->id }}</th>
+                                        <td>{{ $registrasi->user_id }}</td>
+                                        <td>{{ $registrasi->kompetisi_id }}</td>
+                                        <td>{{ $registrasi->tgl_registrasi }}</td>
                                         <td>
-                                            <!-- Edit Button -->
+                                            {{-- <!-- Edit Button -->
                                             <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted m-r-5"
                                                 data-toggle="modal" data-original-title="Edit"></a>
 
@@ -101,22 +101,17 @@
                                                         <div class="modal-body">
                                                             <div class="card-body pt-5">
                                                                 <form class="mt-5 mb-5"
-                                                                    action="/user/update/{{ $user->id }}" method="post">
+                                                                    action="/registrasi/update/{{ $registrasi->id }}" method="post">
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <label>Name</label>
                                                                         <input type="text" class="form-control" name="name"
-                                                                               placeholder="Your Name" value="{{ $user->name }}" required>
+                                                                               placeholder="Your Name" value="{{ $registrasi->name }}" required>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Email</label>
                                                                         <input type="email" class="form-control" name="email"
-                                                                               placeholder="email@gmail.com" value="{{ $user->email }}" required>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Password</label>
-                                                                        <input type="password" class="form-control" name="password"
-                                                                               placeholder="Password" required>
+                                                                               placeholder="email@gmail.com" value="{{ $registrasi->email }}" required>
                                                                     </div>
                                                         </div>
                                                         </div>
@@ -128,26 +123,26 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <!-- Delete Button -->
-                                            <a href="#modaldelete{{ $user->id }}" class="fa fa-trash color-muted m-r-7"
+                                            <a href="#modaldelete{{ $registrasi->id }}" class="fa fa-trash color-muted m-r-7"
                                                 data-toggle="modal" data-original-title="Delete"></a>
 
                                             <!-- Modal Delete -->
-                                            <div class="modal fade" id="modaldelete{{ $user->id }}">
+                                            <div class="modal fade" id="modaldelete{{ $registrasi->id }}">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete User?</h5>
+                                                            <h5 class="modal-title">Delete Data?</h5>
                                                             <button type="button" class="close" data-dismiss="modal">
                                                                 <span>&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="/user/destroy/{{ $user->id }}" method="GET">
+                                                        <form action="/registrasi/destroy/{{ $registrasi->id }}" method="GET">
                                                             @csrf
                                                             <div class="modal-body">
-                                                                Are you sure you want to delete this user?
+                                                                Are you sure you want to delete this data?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
@@ -169,58 +164,3 @@
         </div>
     </div>
 @endsection
-
-
-    <!-- Modal -->
-
- {{-- @foreach ($users as $d)
-    <div class="modal fade" id="modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Edit</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/user/update/{{ $d->id }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Nama Lengkap </label>
-                            <input type="text" value="{{ $d->name }}" class="form-control" name="name"
-                                placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" value="{{ $d->email }}" class="form-control" name="email"
-                                placeholder="admin@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="password"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label>Role</label>
-                            <select class="form-control" name="role" required>
-                                <option value="" hidden>-- pilih role --</option>
-                                <option <?php if ($d['role'] == 'admin') {
-                                    echo 'selected';
-                                }
-                                ?>>Admin</option>
-                                <option <?php if ($d['role'] == 'operator') {
-                                    echo 'selected';
-                                }
-                                ?>>Operator</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                                class="fas fa-undo">Close</i></button>
-                        <button type="submit" class="btn btn-primary" class="fas fa-save">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-@endforeach --}}

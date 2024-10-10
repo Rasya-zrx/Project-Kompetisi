@@ -30,7 +30,7 @@
         @include('partials.sidebar')
         <div class="content-body">
             <div class="container-fluid mt-3">
-                <div class="row">
+                <div class="row-fluid">
                     @yield('content')
                 </div>
             </div>

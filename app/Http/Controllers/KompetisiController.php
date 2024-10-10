@@ -11,9 +11,10 @@ class KompetisiController extends Controller
 {
     public function index()
     { 
-            $kompetisi = Kompetisi::paginate(2);
-            $title = 'Daftar Kompetisi';
-            Paginator::useBootstrapFour();
+     $kompetisi = Kompetisi::paginate(5);
+     $title = 'Daftar Kompetisi';
+     Paginator::useBootstrapFour();
+
         return view('admin.kompetisi.list', compact('title', 'kompetisi'));
     }   
 

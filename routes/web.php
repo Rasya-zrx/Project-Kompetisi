@@ -7,6 +7,7 @@ use App\Http\Controllers\KompetisiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegistrasiController;
 
 Route::get('/', function () {
     return view('layouts.home'); 
@@ -14,14 +15,13 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('login', [LoginController::class, 'loginform'])->name('login');
-Route::post('authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/login', [LoginController::class, 'loginform'])->name('login');
+Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-
-Route::get('register', [RegisterController::class, 'index'])->name('register');
-Route::post('register', [RegisterController::class, 'registerprocess'])->name('registerprocess');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'registerprocess'])->name('registerprocess');
 
 route::get('/kompetisi', [KompetisiController::class, 'index']);
 route::get('/kompetisi/create', [KompetisiController::class, 'create']);
@@ -34,3 +34,9 @@ route::post('/user/store', [Usercontroller::class,'store'])->name('users/store')
 route::get('/user/create', [Usercontroller::class,'create']);
 route::post('/user/update/{id}', [Usercontroller::class,'update']);
 route::get('/user/destroy/{id}', [Usercontroller::class,'destroy']);
+
+route::get('/registrasi', [RegistrasiController::class, 'index']);
+route::get('/registrasi/list', [RegistrasiController::class, 'list']);
+route::post('/registrasi/store', [RegistrasiController::class, 'store']);
+route::get('/registrasi/create', [RegistrasiController::class, 'create']);
+route::get('/registrasi/destroy/{id}', [RegistrasiController::class, 'destroy']);   

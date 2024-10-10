@@ -10,10 +10,10 @@ class HomeController extends Controller
     public function index()
     {
 
-            $tittle ='homepage';
-        
+        $title ='homepage';     
         $kompetisis = kompetisi::all();
-        return view('layouts.home', compact('tittle', 'kompetisis'));
+       
+        return view('layouts.home', compact('title', 'kompetisis'));
 
     }
 

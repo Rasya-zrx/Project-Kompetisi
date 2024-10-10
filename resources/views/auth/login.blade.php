@@ -36,7 +36,7 @@
                                 
                                 <a class="text-center"> <h4>Slebeww Competition</h4></a>
         
-                                <form class="mt-5 mb-5 login-input" action="{{ route('authenticate') }}" method="post">
+                                <form class="mt-5 mb-5 login-input" action="/authenticate" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <input name="email" type="email" class="form-control" placeholder="Email" required>
@@ -53,7 +53,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                    <button type="submit" class="btn login-form__btn submit w-100" href="{{ route('app') }}">Sign In</button>
+                                    <button type="submit" class="btn login-form__btn submit w-100" href="{{ route('home') }}">Sign In</button>
                                 </form>
                                 <p class="mt-5 login-form__footer">Dont have account? <a href="{{ route('register') }}" class="text-primary">Sign Up</a> now</p>
                             </div>

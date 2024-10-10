@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -10,8 +11,9 @@ class UserController extends Controller
 {
     public function users()
     {
-     $users = User::all();
+     $users = User::paginate(10);
      $title = "Data User";
+     Paginator::useBootstrapFour();
           
         return view('admin.users.datauser', compact('users', 'title'));
     }

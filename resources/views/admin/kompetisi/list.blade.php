@@ -22,8 +22,8 @@
                                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="card-body pt-5">
-                                                <form class="mt-5 mb-5" action="/kompetisi/store" method="post" enctype="multipart/form-data">
+                                            <div class="card-body">
+                                                <form action="/kompetisi/store" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>Nama</label>

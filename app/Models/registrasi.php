@@ -12,6 +12,12 @@ class registrasi extends Model
     use HasFactory;
     protected $table = 'registrasi';
 
+    protected $fillable = [
+        'user_id',
+        'kompetisi_id',
+        'tgl_registrasi',
+    ];
+
     public function user() : BelongsTo{
         return $this->belongsTo(User::class);
     }
