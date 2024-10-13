@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('registrasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('kompetisi_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('kompetisi_id')->constrained('kompetisi');
             $table->timestamp('tgl_registrasi');
             $table->timestamps();
             

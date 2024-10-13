@@ -21,16 +21,19 @@
                     <i class="icon-badge menu-icon"></i><span class="nav-text">Informasi Peringkat</span>
                 </a>
             </li>
+            @if (Auth::user()->role == 'admin')
             <li>
                 <a href="/registrasi/list" aria-expanded="false">
                     <i class="icon-notebook menu-icon"></i><span class="nav-text">Data Registrasi</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <a href="/user" aria-expanded="false">
                     <i class="icon-people menu-icon"></i><span class="nav-text">Users</span>
                 </a>
             </li>
+            @endif
+           
         </ul>
     </div>
 </div>

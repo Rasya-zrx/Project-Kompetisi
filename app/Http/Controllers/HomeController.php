@@ -11,9 +11,9 @@ class HomeController extends Controller
     {
 
         $title ='homepage';     
-        $kompetisis = kompetisi::all();
+        $kompetisi = kompetisi::all();
        
-        return view('layouts.home', compact('title', 'kompetisis'));
+        return view('layouts.home', compact('title', 'kompetisi'));
 
     }
 

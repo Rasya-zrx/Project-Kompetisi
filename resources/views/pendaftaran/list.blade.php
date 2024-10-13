@@ -8,71 +8,16 @@
                     <div class="card-title">
                         <h4 class="card-title mt-3 ml-3">{{ $title }}</h4>
                     </div>
-                    
-                    {{-- <!-- Button to trigger modal -->
-                    <button type="button" class="btn mb-1 btn-rounded btn-primary" data-toggle="modal" 
-                            data-original-title="create" data-target="#modalcreate">+ TAMBAH DATA</button>
-
-                    <!-- Modal Create -->
-                    <div class="bootstrap-modal">
-                        <div class="modal fade" id="modalcreate">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Tambah Data</h5>
-                                        <button type="button" class="close" data-dismiss="modal">
-                                            <span>&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="card-body pt-5">
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                            <h4 class="text-center">Tambah Data</h4>
-                                            <form class="mt-5 mb-5" action="/user/store" method="post">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input type="text" class="form-control" name="name"
-                                                           placeholder="Your Name" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form-control" name="email"
-                                                           placeholder="email@gmail.com" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control" name="password"
-                                                           placeholder="Password" required>
-                                                </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-outline-primary">Save Changes</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <!-- Table -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr class="text-center">
-                                    <th>ID</th>
+                                    <th>ID Registrasi</th>
                                     <th>User ID</th>
                                     <th>ID Kompetisi</th>
-                                    <th>tgl registrasi</th>
+                                    <th>Tgl Registrasi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

@@ -16,9 +16,8 @@ class RegistrasiController extends Controller
     {
         $title = 'Form Registrasi';
         $kompetisi = kompetisi::all();
-        $registrasi = registrasi::all();
 
-        return view('pendaftaran.registrasi', compact('title', 'kompetisi', 'registrasi'));
+        return view('pendaftaran.registrasi', compact('title', 'kompetisi'));
     }
 
     public function list()
@@ -44,37 +43,19 @@ class RegistrasiController extends Controller
 
         $user = user::where('email', $request->email)->first();
         if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
+            return redirect()->back()->with('error', 'User not found. Please register first');
         }
 
         $cekregist = registrasi::where('user_id', $user->id)->where('kompetisi_id', $request->id_kompetisi)->first();
         if ($cekregist) {
-            return redirect()->back()->with('error', 'User sudah daftar di kompetisi tersebut');
+            return redirect()->back()->with('error', 'User already registered at this competition');
         }
 
-        $registrasi = registrasi:: create([
+        $registrasi = registrasi::create([
             'user_id' => $user->id,
             'kompetisi_id' => $request->id_kompetisi,
             'tgl_registrasi' => Carbon::now(),
         ]);
         return redirect('/home')->with('success', 'Registrasi Berhasil');
     }
-
-    // public function authenticate(Request $request) //: RedirectResponse
-    // {
-    //     $credentials = $request->validate([
-    //         'name' => ['required'],
-    //         'email' => ['required', 'email'],
-    //     ]);
- 
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
- 
-    //         return redirect('/home');
-    //     }
- 
-    //     return back()->withErrors([
-    //         'email','name' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
 }

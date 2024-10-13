@@ -60,11 +60,6 @@
                                             </button>
                                         </form>
                                     </li>
-                                    @if(session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
                                 </ul>
                             </div>
                         </div>

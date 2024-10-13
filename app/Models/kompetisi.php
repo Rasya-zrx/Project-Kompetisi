@@ -24,8 +24,4 @@ class kompetisi extends Model
         return $this->hasMany(registrasi::class);
     }
 
-    public function juara() : HasMany {
-        return $this->hasMany(juara::class);
-    }
-
 }

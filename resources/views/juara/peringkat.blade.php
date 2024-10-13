@@ -36,19 +36,15 @@
                                             </div>
                                         @endif
                                         <h3 class="text-center">Tambah Data</h3>
-                                        <form class="mt-5 mb-5" action="/user/store" method="post">
+                                        <form class="mt-5 mb-5" action="/juara/store" method="post">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                                <label>Regist</label>
+                                                <input type="text" class="form-control" name="registrasi_id" placeholder="Regist ID" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control" name="email" placeholder="email@gmail.com" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                                <label>peringkat</label>
+                                                <input type="text" class="form-control" name="keterangan_peringkat" placeholder="keterangan peringkat" required>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -66,21 +62,19 @@
                         <table class="table">
                             <thead>
                                 <tr class="text-center">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Action</th>
+                                    <th>id</th>
+                                    <th>peringkat User</th>
+                                    <th>regist id</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($peringkat as $data)
                                     <tr class="text-center">
-                                        <th>{{ $user->id }}</th>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td>
+                                        <th>{{ $data->id }}</th>
+                                        <th>{{ $data->keterangan_peringkat }}</th>
+                                        <td>{{ $data->registrasi_id }}</td>
+                                        {{-- <td> 
                                             <!-- Edit Button -->
                                             <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted m-r-5" data-toggle="modal"></a>
 
@@ -108,17 +102,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Password</label>
-                                                                        <input type="password" class="form-control" name="password" placeholder="Password">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Role</label>
-                                                                        <select name="role" class="form-control" required>
-                                                                            <option value="" hidden>-- pilih role --</option>
-                                                                            <option value="{{ $user->role }}" {{ $user->role == 'admin' ? 'selected' : '' }}>
-                                                                                admin</option>
-                                                                            <option value="{{ $user->role }}" {{ $user->role == 'visitor' ? 'selected' : '' }}>
-                                                                                visitor</option>
-                                                                        </select>
+                                                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -156,7 +140,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -168,59 +152,3 @@
         </div>
     </div>
 @endsection
-
-
-
-    <!-- Modal -->
-
- {{-- @foreach ($users as $d)
-    <div class="modal fade" id="modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Edit</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/user/update/{{ $d->id }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Nama Lengkap </label>
-                            <input type="text" value="{{ $d->name }}" class="form-control" name="name"
-                                placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" value="{{ $d->email }}" class="form-control" name="email"
-                                placeholder="admin@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="password"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label>Role</label>
-                            <select class="form-control" name="role" required>
-                                <option value="" hidden>-- pilih role --</option>
-                                <option <?php if ($d['role'] == 'admin') {
-                                    echo 'selected';
-                                }
-                                ?>>Admin</option>
-                                <option <?php if ($d['role'] == 'operator') {
-                                    echo 'selected';
-                                }
-                                ?>>Operator</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                                class="fas fa-undo">Close</i></button>
-                        <button type="submit" class="btn btn-primary" class="fas fa-save">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-@endforeach --}}

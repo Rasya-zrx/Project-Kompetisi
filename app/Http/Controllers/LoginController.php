@@ -33,7 +33,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/home')->with('success', 'Logout Berhasil');
+        return redirect('/login')->with('success', 'Logout Berhasil');
     }
 }
 

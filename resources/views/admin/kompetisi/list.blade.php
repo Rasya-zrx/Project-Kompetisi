@@ -9,62 +9,65 @@
                         <div class="card-title mt-3 ml-3">
                             <h4>{{ $title }}</h4>
                         </div>
+                        @if (Auth::user()->role == 'admin')
                         <button type="button" class="btn ml-3 mr-3 btn-rounded btn-secondary" data-toggle="modal"
-                            data-original-title="create" data-target="#modalcreate">+ TAMBAH DATA</button>
+                        data-original-title="create" data-target="#modalcreate">+ TAMBAH DATA</button>
 
-                        <!-- Modal Create -->
-                        <div class="bootstrap-modal">
-                            <div class="modal fade" id="modalcreate">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Tambah Data</h5>
-                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="card-body">
-                                                <form action="/kompetisi/store" method="post" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label>Nama</label>
-                                                        <input type="text" class="form-control" name="nama_kompetisi"
-                                                            placeholder="Nama Kompetisi" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Deskripsi</label>
-                                                        <input type="text" class="form-control" name="deskripsi"
-                                                            placeholder="Deskripsi" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Tanggal Kompetisi</label>
-                                                        <input type="date" class="form-control" name="tgl_kompetisi"
-                                                            placeholder="Tanggal Kompetisi" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Tanggal Buka Registrasi</label>
-                                                        <input type="date" class="form-control" name="tgl_buka_regist"
-                                                            placeholder="Tanggal Buka Registrasi" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Tanggal Tutup Registrasi</label>
-                                                        <input type="date" class="form-control" name="tgl_tutup_regist"
-                                                            placeholder="Tanggal Tutup Registrasi" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="gambar">Foto</label>
-                                                        <input type="file" class="form-control" accept="image/*" name="gambar"required>
-                                                    </div>
-                                        </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-outline-primary">Save Changes</button>
-                                        </div>
-                                        </form>
+                    <!-- Modal Create -->
+                    <div class="bootstrap-modal">
+                        <div class="modal fade" id="modalcreate">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Tambah Data</h5>
+                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                     </div>
+                                    <div class="modal-body">
+                                        <div class="card-body">
+                                            <form action="/kompetisi/store" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>Nama</label>
+                                                    <input type="text" class="form-control" name="nama_kompetisi"
+                                                        placeholder="Nama Kompetisi" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Deskripsi</label>
+                                                    <input type="text" class="form-control" name="deskripsi"
+                                                        placeholder="Deskripsi" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tanggal Kompetisi</label>
+                                                    <input type="date" class="form-control" name="tgl_kompetisi"
+                                                        placeholder="Tanggal Kompetisi" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tanggal Buka Registrasi</label>
+                                                    <input type="date" class="form-control" name="tgl_buka_regist"
+                                                        placeholder="Tanggal Buka Registrasi" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tanggal Tutup Registrasi</label>
+                                                    <input type="date" class="form-control" name="tgl_tutup_regist"
+                                                        placeholder="Tanggal Tutup Registrasi" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="gambar">Foto</label>
+                                                    <input type="file" class="form-control" accept="image/*" name="gambar"required>
+                                                </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                        @endif
+                        
 
                         <!-- Table Data -->
                         <div class="table-responsive">
@@ -78,7 +81,9 @@
                                         <th>Tgl Buka Registrasi</th>
                                         <th>Tgl Tutup Registrasi</th>
                                         <th>Gambar</th>
+                                        @if (Auth::user()->role == 'admin')
                                         <th>Action</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,6 +99,7 @@
                                                 <img src="{{ asset ('storage/'.$kompe->gambar) }}" class="rounded"
                                                     style="width: 50px">
                                             </td>
+                                            @if (Auth::user()->role == 'admin')
                                             <td>
                                                 <!-- Edit Button -->
                                                 <a href="#modaledit{{ $kompe->id }}" class="fa fa-edit color-muted mr-3"
@@ -185,6 +191,8 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            @endif
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

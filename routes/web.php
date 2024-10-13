@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JuaraController;
 use App\Http\Controllers\KompetisiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -22,6 +23,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'registerprocess'])->name('registerprocess');
+
+Route::get('/juara', [JuaraController::class, 'index']);
+Route::post('/juara/store', [JuaraController::class, 'store']);
+Route::get('/juara/{peringkat_id}', [JuaraController::class, 'lihatPeringkat']);
 
 route::get('/kompetisi', [KompetisiController::class, 'index']);
 route::get('/kompetisi/create', [KompetisiController::class, 'create']);

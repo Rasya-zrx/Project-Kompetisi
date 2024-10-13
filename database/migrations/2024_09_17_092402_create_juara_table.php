@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('juara', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('registrasi_id');
+            $table->foreignId('registrasi_id')->constrained('registrasi');
             $table->string('keterangan_peringkat');
             $table->timestamps();
         });
