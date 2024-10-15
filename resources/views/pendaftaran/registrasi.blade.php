@@ -20,15 +20,7 @@
                                     <label>Email <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" name="email" placeholder="Your valid email.." required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Turnamen yang ingin didaftarkan <span class="text-danger">*</span></label>
-                                    <select class="form-control" name="id_kompetisi" required>
-                                        <option value="">Please select</option>
-                                        @foreach ($kompetisi as $kompe)
-                                            <option value="{{ $kompe->id }}">{{ $kompe->nama_kompetisi }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                {{-- <input type="hidden" name="id_kompetisi" value="{{ $kompetisi->id }}"> --}}
                                 <div class="form-group text-right">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

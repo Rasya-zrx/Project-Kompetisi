@@ -9,12 +9,13 @@
                         <h4>{{ $title }}</h4>
                     </div>
                     
+                    @if (Auth::user()->role == 'admin')
                     <!-- Button to trigger modal -->
                     <button type="button" class="btn mb-1 ml-3 mr-3 btn-rounded btn-primary" data-toggle="modal" data-target="#modalcreate">
                         + TAMBAH DATA
                     </button>
 
-                    <!-- Modal Create -->
+                    <!-- Modal Create -->        
                     <div class="modal fade" id="modalcreate">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -36,11 +37,20 @@
                                             </div>
                                         @endif
                                         <h3 class="text-center">Tambah Data</h3>
+                                        @if (Session::get('error'))
+                                <div class="alert alert-danger">
+                                    {{ Session::get('error') }}
+                                </div>  
+                            @endif
                                         <form class="mt-5 mb-5" action="/juara/store" method="post">
                                             @csrf
                                             <div class="form-group">
                                                 <label>Regist</label>
-                                                <input type="text" class="form-control" name="registrasi_id" placeholder="Regist ID" required>
+                                                <select class="form-control" name="registrasi_id" required>
+                                                    <option value="">-- pilih id regist --</option>
+                                                    @foreach ($registrasi as $regist)
+                                                    <option value="{{ $regist->id }}">{{ $regist->id }}</option>
+                                                    @endforeach
                                             </div>
                                             <div class="form-group">
                                                 <label>peringkat</label>
@@ -56,53 +66,61 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+
+                    <div>
+                        <a class="btn mb-1 ml-3 mr-3 btn-rounded btn-secondary" href="/juara/export">Export</a>
+                    </div>
 
                     <!-- Table -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr class="text-center">
-                                    <th>id</th>
+                                    @if (Auth::user()->role == 'admin')
+                                    <th>id</th>  
+                                    @endif                                 
                                     <th>peringkat User</th>
                                     <th>regist id</th>
-
+                                    @if (Auth::user()->role == 'admin')
+                                    <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($peringkat as $data)
                                     <tr class="text-center">
+                                        @if (Auth::user()->role == 'admin')
                                         <th>{{ $data->id }}</th>
+                                        @endif
                                         <th>{{ $data->keterangan_peringkat }}</th>
                                         <td>{{ $data->registrasi_id }}</td>
-                                        {{-- <td> 
+                                        @if (Auth::user()->role == 'admin')
+                                        <td> 
                                             <!-- Edit Button -->
-                                            <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted m-r-5" data-toggle="modal"></a>
+                                            <a href="#modaledit{{ $data->id }}" class="fa fa-edit color-muted m-r-5" data-toggle="modal"></a>
 
                                             <!-- Modal Edit -->
-                                            <div class="modal fade" id="modaledit{{ $user->id }}">
+                                            <div class="modal fade" id="modaledit{{ $data->id }}">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit User</h5>
+                                                            <h5 class="modal-title">Edit Data</h5>
                                                             <button type="button" class="close" data-dismiss="modal">
                                                                 <span>&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="card-body pt-5">
-                                                                <form action="/user/update/{{ $user->id }}" method="post">
+                                                                <form action="/juara/update/{{ $data->id }}" method="post">
                                                                     @csrf
                                                                     <div class="form-group">
-                                                                        <label>Name</label>
-                                                                        <input type="text" class="form-control" name="name" placeholder="Your Name" value="{{ $user->name }}" required>
+                                                                        <label>registrasi id</label>
+                                                                        <input type="text" class="form-control" name="registrasi_id" placeholder="regist id" value="{{ $data->registrasi_id }}" required>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Email</label>
-                                                                        <input type="email" class="form-control" name="email" placeholder="email@gmail.com" value="{{ $user->email }}" required>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Password</label>
-                                                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                                                        <label>keterangan peringkat</label>
+                                                                        <input type="text" class="form-control" name="keterangan_peringkat" placeholder="keterangan peringkat" value="{{ $data->keterangan_peringkat }}" required>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -116,22 +134,22 @@
                                             </div>
 
                                             <!-- Delete Button -->
-                                            <a href="#modaldelete{{ $user->id }}" class="fa fa-trash color-muted m-r-7" data-toggle="modal"></a>
+                                            <a href="#modaldelete{{ $data->id }}" class="fa fa-trash color-muted m-r-7" data-toggle="modal"></a>
 
                                             <!-- Modal Delete -->
-                                            <div class="modal fade" id="modaldelete{{ $user->id }}">
+                                            <div class="modal fade" id="modaldelete{{ $data->id }}">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Delete User?</h5>
+                                                            <h5 class="modal-title">Delete Data?</h5>
                                                             <button type="button" class="close" data-dismiss="modal">
                                                                 <span>&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="/user/destroy/{{ $user->id }}" method="GET">
+                                                        <form action="/juara/destroy/{{ $data->id }}" method="GET">
                                                             @csrf
                                                             <div class="modal-body">
-                                                                Are you sure you want to delete this user?
+                                                                Are you sure you want to delete this data?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -140,8 +158,9 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div> --}}
-                                        </td>
+                                            </div>
+                                        </td>  
+                                        @endif                                   
                                     </tr>
                                 @endforeach
                             </tbody>

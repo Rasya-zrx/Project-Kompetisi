@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RegistrasiController extends Controller
 {
-    public function index()
+    public function index($id_komp)
     {
         $title = 'Form Registrasi';
-        $kompetisi = kompetisi::all();
+        $kompetisi = kompetisi::find($id_komp);
 
         return view('pendaftaran.registrasi', compact('title', 'kompetisi'));
     }

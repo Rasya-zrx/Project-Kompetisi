@@ -18,7 +18,9 @@
                                     <th>User ID</th>
                                     <th>ID Kompetisi</th>
                                     <th>Tgl Registrasi</th>
+                                    @if (Auth::user()->role == 'admin')
                                     <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,11 +32,11 @@
                                         <td>{{ $registrasi->tgl_registrasi }}</td>
                                         <td>
                                             {{-- <!-- Edit Button -->
-                                            <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted m-r-5"
+                                            <a href="#modaledit{{ $registrasi->id }}" class="fa fa-edit color-muted m-r-5"
                                                 data-toggle="modal" data-original-title="Edit"></a>
 
                                             <!-- Modal Edit -->
-                                            <div class="modal fade" id="modaledit{{ $user->id }}">
+                                            <div class="modal fade" id="modaledit{{ $registrasi->id }}">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

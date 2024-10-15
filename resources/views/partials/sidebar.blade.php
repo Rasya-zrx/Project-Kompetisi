@@ -23,7 +23,7 @@
             </li>
             @if (Auth::user()->role == 'admin')
             <li>
-                <a href="/registrasi/list" aria-expanded="false">
+                <a href="{{ url('/registrasi-list') }}" aria-expanded="false">
                     <i class="icon-notebook menu-icon"></i><span class="nav-text">Data Registrasi</span>
                 </a>
             </li>

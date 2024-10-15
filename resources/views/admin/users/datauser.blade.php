@@ -50,6 +50,13 @@
                                                 <label>Password</label>
                                                 <input type="password" class="form-control" name="password" placeholder="Password" required>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Role</label>
+                                                <select class="form-control" name="role" required>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="visitor">Visitor</option>
+                                                </select>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-outline-primary">Save Changes</button>
@@ -59,6 +66,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+
+                    <div>
+                        <a class="btn mb-1 ml-3 mr-3 btn-rounded btn-secondary" href="/user/export">Export</a>
                     </div>
 
                     <!-- Table -->
@@ -82,7 +94,7 @@
                                         <td>{{ $user->role }}</td>
                                         <td>
                                             <!-- Edit Button -->
-                                            <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted m-r-5" data-toggle="modal"></a>
+                                            <a href="#modaledit{{ $user->id }}" class="fa fa-edit color-muted mr-3" data-toggle="modal"></a>
 
                                             <!-- Modal Edit -->
                                             <div class="modal fade" id="modaledit{{ $user->id }}">
@@ -114,9 +126,9 @@
                                                                         <label>Role</label>
                                                                         <select name="role" class="form-control" required>
                                                                             <option value="" hidden>-- pilih role --</option>
-                                                                            <option value="{{ $user->role }}" {{ $user->role == 'admin' ? 'selected' : '' }}>
+                                                                            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>
                                                                                 admin</option>
-                                                                            <option value="{{ $user->role }}" {{ $user->role == 'visitor' ? 'selected' : '' }}>
+                                                                            <option value="visitor" {{ $user->role == 'visitor' ? 'selected' : '' }}>
                                                                                 visitor</option>
                                                                         </select>
                                                                     </div>
@@ -132,7 +144,7 @@
                                             </div>
 
                                             <!-- Delete Button -->
-                                            <a href="#modaldelete{{ $user->id }}" class="fa fa-trash color-muted m-r-7" data-toggle="modal"></a>
+                                            <a href="#modaldelete{{ $user->id }}" class="fa fa-trash color-muted" data-toggle="modal"></a>
 
                                             <!-- Modal Delete -->
                                             <div class="modal fade" id="modaldelete{{ $user->id }}">
@@ -168,59 +180,3 @@
         </div>
     </div>
 @endsection
-
-
-
-    <!-- Modal -->
-
- {{-- @foreach ($users as $d)
-    <div class="modal fade" id="modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Edit</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/user/update/{{ $d->id }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Nama Lengkap </label>
-                            <input type="text" value="{{ $d->name }}" class="form-control" name="name"
-                                placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" value="{{ $d->email }}" class="form-control" name="email"
-                                placeholder="admin@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="password"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label>Role</label>
-                            <select class="form-control" name="role" required>
-                                <option value="" hidden>-- pilih role --</option>
-                                <option <?php if ($d['role'] == 'admin') {
-                                    echo 'selected';
-                                }
-                                ?>>Admin</option>
-                                <option <?php if ($d['role'] == 'operator') {
-                                    echo 'selected';
-                                }
-                                ?>>Operator</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
-                                class="fas fa-undo">Close</i></button>
-                        <button type="submit" class="btn btn-primary" class="fas fa-save">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-@endforeach --}}

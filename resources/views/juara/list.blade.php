@@ -18,7 +18,7 @@
                                 <span class="display-4"><img src="{{ asset ('storage/'.$kompe->gambar) }}" class="rounded"
                                     style="width: 150px"></span>
                                 <h2 class="mt-3">{{ $kompe->nama_kompetisi }}</h2>
-                                <a href="/juara/{{ $kompe->id }}" class="btn gradient-9 btn-lg border-0 btn-rounded px-5">Lihat Peringkat</a>
+                                <a href="/juara/peringkat" class="btn gradient-9 btn-lg border-0 btn-rounded px-5">Lihat Peringkat</a>
                             </div>
                         </div>
                     </div>

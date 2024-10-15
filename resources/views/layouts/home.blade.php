@@ -7,9 +7,22 @@
         Content body start
     ***********************************-->
     <div class="content-body" style="width:100%;">
+        <h3>{{ $title }}</h3>
         <!-- row -->
-        <div class="container-fluid">
-            <div class="row">           
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card gradient-3">
+                        <div class="card-body">
+                            <h1 class="card-title text-white">Jumlah User</h1>
+                            <div class="d-inline-block">
+                                <h1 class="text-white">{{ $jumlahuser }}</h1>
+                                {{-- <p class="text-white mb-0">Jan - March 2019</p> --}}
+                            </div>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                        </div>
+                    </div>
+                </div>
             @foreach ($kompetisi as $kompe)
                 <div class="col-10">
                     <div class="card">
@@ -18,7 +31,7 @@
                                 <span class="display-4"><img src="{{ asset ('storage/'.$kompe->gambar) }}" class="rounded"
                                     style="width: 150px"></span>
                                 <h2 class="mt-3">{{ $kompe->nama_kompetisi }}</h2>
-                                <p>{{ $kompe->deskripsi }}</p><a href="/registrasi" class="btn gradient-9 btn-lg border-0 btn-rounded px-5">Regist Now!</a>
+                                <p>{{ $kompe->deskripsi }}</p><a href="/registrasi/{{ $kompe->id }}" class="btn gradient-9 btn-lg border-0 btn-rounded px-5">Regist Now!</a>
                             </div>
                         </div>
                     </div>
