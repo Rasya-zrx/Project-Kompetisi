@@ -20,6 +20,12 @@ class UserController extends Controller
      $users = User::paginate(10);
      $title = "Data User";
      Paginator::useBootstrapFour();
+
+     // Dapatkan ID user yang sedang login
+     $loggedInUserId = Auth::id();
+
+     // Ambil semua user kecuali user yang sedang login
+     $users = User::where('id', '!=', $loggedInUserId)->get();
           
         return view('admin.users.datauser', compact('users', 'title'));
     }
@@ -32,10 +38,21 @@ class UserController extends Controller
     }
 
     public function destroy($id)
-    {
-        $users = User::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil dihapus');
+{
+    // Temukan pengguna berdasarkan ID
+    $userToDelete = User::findOrFail($id);
+
+    // Cek apakah user yang ingin dihapus adalah admin
+    if ($userToDelete && $userToDelete->role === 'admin') {
+        return redirect()->back()->withErrors(['errorr' => 'Anda tidak dapat menghapus admin lain.']);
+
     }
+    // Hapus user jika bukan admin
+    $userToDelete->delete();
+
+    return redirect()->back()->with('success', 'Data Berhasil dihapus');
+}
+
 
     public function store(Request $request)
     {   

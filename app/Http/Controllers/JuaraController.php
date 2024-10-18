@@ -16,14 +16,33 @@ class JuaraController extends Controller
         return view('juara.list', compact('kompetisi'));
     }
 
-    public function lihatPeringkat()
+    // public function lihatPeringkat()
+    // {
+    //     $title = 'Daftar Juara';
+    //     $peringkat = juara::all();
+    //     $registrasi = registrasi::all();
+        
+    //     return view('juara.peringkat', compact('title', 'peringkat', 'registrasi'));
+        
+    // }
+
+    public function lihatjuara($kompetisi_id)
     {
         $title = 'Daftar Juara';
-        $peringkat = juara::all();
-        $registrasi = registrasi::all();
-        
-        return view('juara.peringkat', compact('title', 'peringkat', 'registrasi'));
-        
+        $kompetisi = kompetisi::find($kompetisi_id);
+        $registrasi = registrasi::where('kompetisi_id', $kompetisi_id)->get();
+
+        $peringkat = [];
+
+        foreach ($kompetisi->registrasi as $data) { 
+            // dd($data->toArray());
+            foreach ($data->juara as $juara) {
+                // dd($juara->toArray());
+                $peringkat[] = $juara;   
+            }
+        }
+
+        return view('juara.peringkat', compact('title', 'kompetisi', 'registrasi', 'peringkat'));
     }
     
 
@@ -39,6 +58,7 @@ class JuaraController extends Controller
         if ($cek) {
             return redirect()->back()->with('error', 'User already registered at this competition');
         }
+
 
         juara::create([
             'registrasi_id' => $request->registrasi_id,

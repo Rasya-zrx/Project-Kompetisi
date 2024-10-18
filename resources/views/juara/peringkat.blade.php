@@ -44,6 +44,7 @@
                             @endif
                                         <form class="mt-5 mb-5" action="/juara/store" method="post">
                                             @csrf
+                                            <input type="hidden" name="kompetisi_id" value="{{ $kompetisi->id }}">
                                             <div class="form-group">
                                                 <label>Regist</label>
                                                 <select class="form-control" name="registrasi_id" required>
@@ -82,6 +83,7 @@
                                     @endif                                 
                                     <th>peringkat User</th>
                                     <th>regist id</th>
+                                    <th>Nama Kompetisi</th>
                                     @if (Auth::user()->role == 'admin')
                                     <th>Action</th>
                                     @endif
@@ -95,6 +97,7 @@
                                         @endif
                                         <th>{{ $data->keterangan_peringkat }}</th>
                                         <td>{{ $data->registrasi_id }}</td>
+                                        <td>{{ $data->registrasi->kompetisi->nama_kompetisi }}</td>
                                         @if (Auth::user()->role == 'admin')
                                         <td> 
                                             <!-- Edit Button -->

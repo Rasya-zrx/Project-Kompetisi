@@ -26,9 +26,10 @@ Route::post('/register', [RegisterController::class, 'registerprocess'])->name('
 
 Route::get('/juara', [JuaraController::class, 'index']);
 Route::post('/juara/store', [JuaraController::class, 'store']);
-Route::get('/juara/peringkat', [JuaraController::class, 'lihatPeringkat']);
+
 route::post('/juara/update/{id}', [JuaraController::class, 'update']);
 route::get('/juara/destroy/{id}', [JuaraController::class, 'destroy']);
+route::get('/juara/{kompetisi_id}', [JuaraController::class, 'lihatJuara']);
 route::get('/juara/export', [JuaraController::class, 'view_pdf']);
 
 route::get('/kompetisi', [KompetisiController::class, 'index']);

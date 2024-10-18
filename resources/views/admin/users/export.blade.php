@@ -10,7 +10,7 @@
     <div class="table-responsive">
         <table class="table">
             <thead>
-                <tr class="text-center">
+                <tr style="text-align: center">
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr class="text-center">
+                    <tr style="text-align: center">
                         <th>{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>

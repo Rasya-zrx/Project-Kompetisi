@@ -12,10 +12,10 @@ class HomeController extends Controller
     {
         $title ='Slebew Competition';     
         $kompetisi = kompetisi::all();
-        $users = User::all();
         $jumlahuser = User::count();
+        $jumlahkompe = kompetisi::count();
        
-        return view('layouts.home', compact('title', 'kompetisi', 'users', 'jumlahuser'));
+        return view('layouts.home', compact('title', 'kompetisi', 'jumlahkompe', 'jumlahuser'));
     }
 
 }

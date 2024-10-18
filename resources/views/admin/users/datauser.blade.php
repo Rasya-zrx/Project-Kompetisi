@@ -72,6 +72,7 @@
                     <div>
                         <a class="btn mb-1 ml-3 mr-3 btn-rounded btn-secondary" href="/user/export">Export</a>
                     </div>
+                    
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -156,7 +157,8 @@
                                                                 <span>&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form action="/user/destroy/{{ $user->id }}" method="GET">
+                                                        @if(!$user->is_admin)
+                                                        <form action="/user/destroy/{{ $user->id }}" method="GET";>
                                                             @csrf
                                                             <div class="modal-body">
                                                                 Are you sure you want to delete this user?
@@ -166,6 +168,9 @@
                                                                 <button type="submit" class="btn btn-primary">Delete</button>
                                                             </div>
                                                         </form>
+                                                        @else
+                                                        <span>Admin</span>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,6 +181,20 @@
                         </table>
                     </div>
                 </div>
+                @if($errors->any())
+            <div class="alert alert-danger">
+                {{-- <div class="card"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">Error</h5>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                {{-- </div> --}}
+            </div>
+        @endif
             </div>
         </div>
     </div>
