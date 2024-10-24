@@ -22,6 +22,9 @@ class RegistrasiController extends Controller
 
     public function list()
     {
+        if (Auth::check() && Auth::user()->role !== 'admin') {
+            return redirect('/home')->with('error', 'You do not have access to this resource.');
+        }
         $registrasi = registrasi::paginate(5);
         $title = 'Data Registrasi';
         Paginator::useBootstrapFour();

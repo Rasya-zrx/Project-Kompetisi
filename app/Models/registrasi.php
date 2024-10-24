@@ -19,7 +19,7 @@ class registrasi extends Model
         'tgl_registrasi',
     ];
 
-    public function user() : BelongsTo{
+    public function user() : BelongsTo{     
         return $this->belongsTo(User::class);
     }
 

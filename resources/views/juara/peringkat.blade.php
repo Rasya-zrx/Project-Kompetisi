@@ -48,7 +48,7 @@
                                             <div class="form-group">
                                                 <label>Regist</label>
                                                 <select class="form-control" name="registrasi_id" required>
-                                                    <option value="">-- pilih id regist --</option>
+                                                    <option value="">-- Pilih ID Regist --</option>
                                                     @foreach ($registrasi as $regist)
                                                     <option value="{{ $regist->id }}">{{ $regist->id }}</option>
                                                     @endforeach

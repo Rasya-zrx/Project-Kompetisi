@@ -1,4 +1,4 @@
-<div class="nav-header position-fixed">
+<div class="nav-header position-fixed" style="z-index: 1s">
     <div class="brand-logo">
         <a href="/home">
             <b class="logo-abbr">
@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="header">
+<div class="header position-fixed">
     <div class="header-content clearfix">
         <div class="nav-control">
             <div class="hamburger">
@@ -35,11 +35,7 @@
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#modaleditprofile">
                                             <i class="icon-user"></i>Edit User
-                                        </a>
-                                        
-                                        
-                                        <!-- Modal Edit -->
-                                        
+                                        </a>                              
                                     </li>
                                     <hr class="my-2">
                                     <li>
@@ -64,6 +60,7 @@
     </div>
 </div>
 
+<!-- Modal Edit -->
 <div class="modal fade" id="modaleditprofile">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

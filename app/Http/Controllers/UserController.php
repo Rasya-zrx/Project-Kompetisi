@@ -17,6 +17,9 @@ class UserController extends Controller
 
     public function users()
     {
+        if (Auth::check() && Auth::user()->role !== 'admin') {
+            return redirect('/home')->with('error', 'You do not have access to this resource.');
+        }
      $users = User::paginate(10);
      $title = "Data User";
      Paginator::useBootstrapFour();

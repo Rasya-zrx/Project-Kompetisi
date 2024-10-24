@@ -16,28 +16,31 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// route login
 Route::get('/login', [LoginController::class, 'loginform'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
+// route register
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'registerprocess'])->name('registerprocess');
 
+// route juara
 Route::get('/juara', [JuaraController::class, 'index']);
 Route::post('/juara/store', [JuaraController::class, 'store']);
-
 route::post('/juara/update/{id}', [JuaraController::class, 'update']);
 route::get('/juara/destroy/{id}', [JuaraController::class, 'destroy']);
 route::get('/juara/{kompetisi_id}', [JuaraController::class, 'lihatJuara']);
 route::get('/juara/export', [JuaraController::class, 'view_pdf']);
 
+// route kompetisi
 route::get('/kompetisi', [KompetisiController::class, 'index']);
 route::get('/kompetisi/create', [KompetisiController::class, 'create']);
 route::post('/kompetisi/store', [KompetisiController::class, 'store']);
 route::post('/kompetisi/update/{id}', [KompetisiController::class, 'update']);
 route::get('/kompetisi/destroy/{id}', [KompetisiController::class, 'destroy']);
 
+// route user
 route::get('/user', [Usercontroller::class,'users'])->name('users/list');
 route::post('/user/store', [Usercontroller::class,'store'])->name('users/store');
 route::get('/user/create', [Usercontroller::class,'create']);
@@ -45,6 +48,7 @@ route::post('/user/update/{id}', [Usercontroller::class,'update']);
 route::get('/user/destroy/{id}', [Usercontroller::class,'destroy']);
 route::get('/user/export', [Usercontroller::class,'view_pdf']);
 
+// route registrasi
 route::get('/registrasi/{id_komp}', [RegistrasiController::class, 'index']);
 route::get('/registrasi-list', [RegistrasiController::class, 'list']);
 route::post('/registrasi/store', [RegistrasiController::class, 'store']);
